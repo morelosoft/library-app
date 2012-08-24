@@ -19,31 +19,30 @@ var AppRouter = Backbone.Router.extend({
 	
 	routes:{
 	    "":"main",
-	    //"designer":"designer"
+	    "designer":"designer"
 	},
 	main:function () {
 		
  		$('#appContainer').html(new DesignerView().render().el);
 		$('#header').html(new HeaderView().render().el);
-   		// $('#footer').html(new FooterView().render().el);
+   		$('#mainContainer').html(new RegistryBookLoans().render().el);
    		//$('#tab1').html(new SidebarMainView().render().el);
    		//$('#tab2').html(new SidebarFieldPropView().render().el);
  },
 	designer: function() {
-		var forms = new FormsCollection();
 		
-		forms.fetch ({
-			success: function( event ) {
-				$('#formListContainer').html(new FormListView({model:forms}).render().el);
-				
-				var idForm = $("#cmbDatabases").prop('selectedIndex');
-				eventManager.trigger("renderFields", idForm);
-			}
-		});
-		
-
-		
-		
+		$('#appContainer').html(new DesignerView().render().el);
+		$('#mainContainer').html(new FormBooks().render().el);
+		// var forms = new FormsCollection();
+// 		
+		// forms.fetch ({
+			// success: function( event ) {
+				// $('#formListContainer').html(new FormListView({model:forms}).render().el);
+// 				
+				// var idForm = $("#cmbDatabases").prop('selectedIndex');
+				// eventManager.trigger("renderFields", idForm);
+			// }
+		// });
 	}
 });
 
@@ -134,8 +133,7 @@ function cleanupHighlight(ui, $droppable)
 }
 
 // Aquí se añade el array de vistas que se vayan a renderizar
-tpl.loadTemplates(['header-view', 'footer-view', 'sidebar-view', 'sidebar-field-prop-view', 'sidebar-form-prop-view', 'form-list', 'form-properties',
-                   'field-generic-view', 'designer-view'], function () {
+tpl.loadTemplates(['header-view','designer-view','registryBookLoans-view', 'formBooks-view'], function () {
     app = new AppRouter();
     Backbone.history.start();
 });
