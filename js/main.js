@@ -14,30 +14,22 @@ var AppRouter = Backbone.Router.extend({
 	 	
  	initialize:function () {
    		
-    //$('#tab3').html(new SidebarFormPropView().render().el);
-   		
-   		
+    //$('#tab3').html(new SidebarFormPropView().render().el);	
 	},
 	
 	routes:{
-	    "":"login",
+	    "":"main",
 	    //"designer":"designer"
 	},
-	login:function () {
-        
-        var loginModel = new LoginModel();
-        
-        $('#appContainer').html(new LoginView({model:loginModel}).render().el);
-    },
-	designer: function() {
+	main:function () {
 		
-		$('#appContainer').html(new DesignerView().render().el);
+ 		$('#appContainer').html(new DesignerView().render().el);
 		$('#header').html(new HeaderView().render().el);
-   		$('#footer').html(new FooterView().render().el);
+   		// $('#footer').html(new FooterView().render().el);
    		//$('#tab1').html(new SidebarMainView().render().el);
    		//$('#tab2').html(new SidebarFieldPropView().render().el);
-   		
-		
+ },
+	designer: function() {
 		var forms = new FormsCollection();
 		
 		forms.fetch ({
@@ -114,9 +106,6 @@ $(document).ready(function () {
 		});
 		
 	});
-	
-	
-	
 });
 
 /** Funciones que controlan el estilo de drag and drops **/
@@ -144,9 +133,9 @@ function cleanupHighlight(ui, $droppable)
     $droppable.removeClass("droppable-above droppable-below");
 }
 
-
 // Aquí se añade el array de vistas que se vayan a renderizar
-tpl.loadTemplates(['login-view'], function () {
+tpl.loadTemplates(['header-view', 'footer-view', 'sidebar-view', 'sidebar-field-prop-view', 'sidebar-form-prop-view', 'form-list', 'form-properties',
+                   'field-generic-view', 'designer-view'], function () {
     app = new AppRouter();
     Backbone.history.start();
 });
