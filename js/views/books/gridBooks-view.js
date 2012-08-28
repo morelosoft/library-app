@@ -1,10 +1,7 @@
-/**
- * @author Angel Vazquez
- */
-window.RegistryBookLoans = Backbone.View.extend ({
+window.GridBooks = Backbone.View.extend ({
 	
 	initialize:function () {
-        this.template = _.template(tpl.get('registryBookLoans-view'));
+        this.template = _.template(tpl.get('gridBooks-view'));
     },
 
     render:function (eventName) {
@@ -18,6 +15,7 @@ window.RegistryBookLoans = Backbone.View.extend ({
 	},
 	
 	btnAddNewBookOnClick: function() {
-		eventManager.trigger("showFormBooks",new BookModel(), false);
+		eventManager.trigger("showFormBooks", new BookModel(),false);
+		//alert("Hola");
 	}
 });

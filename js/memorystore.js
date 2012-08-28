@@ -2,26 +2,71 @@
 window.store = {
 	formsList: {},
     forms: {},
-
-
-/** Login **/
-	populateLogin: function () {
-       this.login[1] = {
-           "id": 1,
-           "name": "Angel",
-           "last1":"Vazquez",
-           "last2": "Quintero",
-           "fullName":"Angel Vazquez Quintero",
-           "email":"hovamanager@morelosoft.com",
-           "password": "morelosoft",
-       }
-    },
-   
-   findLogin: function () {
-           return _.values(this.login);
-   },
-
-/** Forms **/
+    books: {},
+    authors:{},
+    
+    /** Books **/
+   populateBooks: function(){
+   		this.books[1] = {
+			"id": 1,
+			"title": "Steve Jobs biography",
+			"author": 3,
+			"genre": "Contemporary",
+			"status": true,
+			"available": "available"
+		};
+		this.books[2] = {
+			"id": 2,
+			"title": "ios 5 Development",
+			"author": 1,
+			"genre": "Multicultural",
+			"status": true,
+			"available": "available"
+		};
+		this.lastId = 2;
+	},
+	booksAll: function () {
+		return _.values(this.books);
+	},
+	
+	createBooks: function (model) {
+		this.lastId++;
+		model.set('id', this.lastId);
+		this.books[this.lastId] = model;
+		alert("Book creado correctamente");
+		return model;
+	},
+	
+	updateBooks: function (model) {
+		this.books[model.id] = model;
+		return model;
+	},
+	
+	destroyBooks: function (model) {
+		delete this.books[model.id];
+		return model;
+		},
+    
+     /** authors **/
+     populateAuthors: function(){
+   		this.authors[1] = {
+			"id": 1,
+			"name": "Isaccson",
+			"country": "USA",
+			"birth_day": "10/04/2012",
+		};
+		this.authors[2] = {
+			"id": 2,
+			"name": "Walker",
+			"country": "USA",
+			"birth_day": "10/08/1990",
+		};
+		this.lastId = 2;
+	},
+	authorsAll: function () {
+		return _.values(this.authors);
+	},
+    
     populate: function () {
 
         this.forms[1] = {
@@ -164,9 +209,22 @@ store.populate();
 Backbone.sync = function (method, model, options) {
     var resp;
 
-	if ( model.url == "api/login" || model.urlRoot == "api/login")
+	if ( model.url == "api/book" || model.urlRoot == "api/book")
 	{
-			resp = store.findLogin();
+		switch (method) {
+			case "read":
+				 resp = store.booksAll();
+				break;
+	        case "create":
+	             resp = store.createBooks(model);
+	            break;
+	        case "update":
+	            // resp = store.update(model);
+	            break;
+	        case "delete":
+	            // resp = store.destroy(model);
+	            break;
+	    }
 	}
 	
 	if ( model.url == "api/forms" || model.urlRoot == "api/forms")
