@@ -13,14 +13,19 @@
 
 	    <link href="css/bootstrap.css" rel="stylesheet">
 	    <link href="css/styles.css" rel="stylesheet">
-      </head>
-      <body>
-	    <div id="header"></div>
-		<div id="appContainer"></div>
+	    <link href="css/ui-lightness/jquery-ui-1.8.23.custom.css" rel="stylesheet">
+	    </head>
+	    <body>
+	    	
+	    	<div id="header"></div>
+	    	<div id="appContainer"></div>
 		
          <!-- LIBS -->
          <script src="lib/jquery-1.8.0.min.js"></script>
          <script src="lib/jquery-ui-1.8.23.custom.min.js"></script>
+         <script src="lib/jquery.ui.core.js"></script>
+         <script src="lib/jquery.ui.widget.js"></script>
+         <script src="lib/jquery.ui.datepicker.js"></script>
          <script src="lib/underscore-min.js"></script>
          <script src="lib/backbone-min.js"></script>
 		 <script src="lib/bootstrap.js"></script>
@@ -35,13 +40,27 @@
          <script src="js/utils.js"></script>
          <!-- MODELS  -->
          <script src="js/models/books/book-model.js"></script>
+         <script src="js/models/author/author-model.js"></script>
+         <script src="js/models/customer/customer-model.js"></script>
+         
        
          <!-- VIEWS   -->
          <script src="js/views/designer-view.js"></script>
          <script src="js/views/designer/header-view.js"></script>
+         
          <script src="js/views/books/registryBookLoans-view.js"></script>
          <script src="js/views/books/formBooks-view.js"></script>
          <script src="js/views/books/gridBooks-view.js"></script>
+         <script src="js/views/books/dropdownCustomer-view.js"></script>
+         <script src="js/views/books/dropdownAuthor-view.js"></script>
+         <script src="js/views/books/dropdownBooks-view.js"></script>
+         <script src="js/views/books/formBooksLoans-view.js"></script>
+         
+         
+         <script src="js/views/authors/author-view.js"></script>
+         <script src="js/views/authors/form-author-view.js"></script>
+         <script src="js/views/customers/customer-view.js"></script>
+         <script src="js/views/customers/form-customer-view.js"></script>
                   
          <script src="js/main.js"></script>
      </body>

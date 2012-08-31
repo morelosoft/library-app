@@ -1,0 +1,50 @@
+<div id="createAuthor" class="container-fluid">
+	<form class="form-horizontal">
+		
+		<div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal">×</button>
+		    
+		    
+		    <h3>Author</h3>
+		
+		</div>
+		 
+		  <div class="control-group">
+		    <label class="control-label" for="inputEmail">Id: </label>
+		    <div class="controls">
+		      <input type="text" id="authorId" value="<%= id === null ? '' : id %>" disabled="true" name="id">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputEmail">Name: </label>
+		    <div class="controls">
+		      <input type="text" id="authorName" placeholder="Name" value="<%= name %>" name="name">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputPassword" >Birthday: </label>
+		    <div class="controls">
+		      <input type="text" id="authorBirthday" name="birth_day" value="<%= birth_day %>" placeholder="Birthday">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputPassword" >Country: </label>
+		    <div class="controls">
+		      <input type="text" id="authorCountry" name="country" value="<%= country %>" placeholder="Country">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputPassword" >Status: </label>
+		    <div class="controls">
+		      <input type="text" id="authorStatus" name="status" value="<%= status %>" placeholder="Country">
+		    </div>
+		  </div>
+		  
+		  <div class="control-group">
+		  	 <div class="controls">
+		  	 	<button id="btnCancelAuthor" type="button" class="btn">Cancel</button>
+		  	<button id="btnSendAuthor" type="button" class="btn btn-primary">Save</button>
+		  	 </div>
+		  </div>
+	</form>
+</div>

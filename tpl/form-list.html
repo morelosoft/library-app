@@ -1,0 +1,12 @@
+<div class="well">	
+	<form class="form-horizontal">
+	    <select id="cmbDatabases">
+	    	<% _.each(model, function(i) { print('<option value=' + i.attributes.id +  '>' + i.attributes.name + '</option>') }) %>
+	    </select>
+	</form>
+	<div id="buttonsCont">
+	    <a id="btnNew"><span class="label label-info">+ nueva</span></a> 
+	    <a id="btnEdit"><span class="label">editar</span></a>
+	    <a id="btnDelete"><span class="label label-important">eliminar</span></a>
+	</div>
+</div>

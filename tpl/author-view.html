@@ -1,0 +1,30 @@
+<div class="bs-docs-example">
+	<legend>Authors</legend>
+            <table id="tblAuthor" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Birthday</th>
+                  <th>Country</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+              	 <% _.each(model, function(i) { print('<tr><td>' + i.attributes.id + '</td>
+                                                      <td><i class=icon-user></i> ' + i.attributes.name + '</td>
+                                                      <td><i class=icon-calendar></i> ' + i.attributes.birth_day + '</td>
+                                                      <td>' + i.attributes.country + '</td>
+                                                       <td>' + i.attributes.status + '</td>');    
+                })%>
+              </tbody>
+            </table>
+   </div>
+   
+<div class="control-group">
+       		<div class="controls">
+       			<button id="btnDeleteAuthor" class="btn btn-danger">Delete Book</button>
+       			<button id="btnEdithAuthor" class="btn btn-warning">Edit Book</button>
+       			<button id="btnCreateAuthor" class="btn btn-primary">Create Book</button>
+       		</div>
+       </div>

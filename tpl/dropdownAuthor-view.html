@@ -1,0 +1,3 @@
+<select id="cmbAuthor" name="author">
+	<% _.each(model, function(i) { print('<option value=' + i.attributes.id +  '>' + i.attributes.name + '</option>') }) %>
+</select>

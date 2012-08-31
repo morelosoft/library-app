@@ -1,0 +1,5 @@
+<div id="dropDownBooks">
+	<select id="cmbBooks" name="bookID">
+		<% _.each(model, function(i) { print('<option value=' + i.attributes.id +  '>' + i.attributes.title + '</option>') }) %>
+	</select>
+</div>

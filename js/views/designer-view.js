@@ -2,8 +2,6 @@ window.DesignerView = Backbone.View.extend ({
 	
 	initialize:function () {
         this.template = _.template(tpl.get('designer-view'));
-        
-
     },
 
     render:function (eventName) {
@@ -11,6 +9,4 @@ window.DesignerView = Backbone.View.extend ({
         $(this.el).html(this.template());
         return this;
     },
-	
-	
 });

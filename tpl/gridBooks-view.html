@@ -1,6 +1,6 @@
 <div class="bs-docs-example">
 	<legend>Books</legend>
-	<table class="table table-bordered">
+	<table id="tblBooks" class="table table-bordered">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -12,22 +12,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Steve Jobs biography</td>
-				<td>3</td>
-				<td>Contemporary</td>
-				<td>true</td>
-				<td>available</td>
-			</tr>
-             <tr>
-             	<td>2</td>
-             	<td>ios 5 Development</td>
-             	<td>1</td>
-             	<td>Multicultural</td>
-             	<td>true</td>
-             	<td>available</td>
-             </tr>
+			<% _.each(model, function(i) { print('<tr><td>' + i.attributes.id + '</td>
+                                                      <td>' + i.attributes.title + '</td>
+ 													  <td><i class=icon-calendar></i> ' + i.attributes.author + '</td>
+                                                      <td><i class=icon-calendar></i> ' + i.attributes.genre + '</td>
+                                                       <td width="250"><i class=icon-user></i> ' + i.attributes.status + '</td>
+                                                      <td width="220"><i class=icon-headphones></i> ' + i.attributes.available + '</td>');})%>
            </tbody>
        </table>
        <div class="control-group">

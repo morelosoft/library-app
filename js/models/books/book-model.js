@@ -7,6 +7,7 @@ window.BookModel= Backbone.Model.extend({
 	defaults: {
 		"id": null,
 		"title": "",
+		"author": "",
 		"genre": "",
 		"status": "",
 		"available": "",
@@ -16,5 +17,23 @@ window.BookModel= Backbone.Model.extend({
 window.BookCollection = Backbone.Collection.extend({
     model:BookModel,
     url:"api/book"
-    //url: "http://192.168.24.182:8098/users/create",
+});
+
+
+
+window.BookLoansModel= Backbone.Model.extend({
+	urlRoot: "api/bookLoans",
+	//urlRoot: "api/fields",
+	defaults: {
+		"id": null,
+		"bookID": "",
+		"customerID": "",
+		"currentdate": "",
+		"date": "",
+	}
+});
+
+window.BookLoansCollection = Backbone.Collection.extend({
+    model:BookLoansModel,
+    url:"api/bookLoans"
 });

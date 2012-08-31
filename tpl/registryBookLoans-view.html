@@ -1,50 +1,29 @@
 <div id="registryBook" class="container-fluid">
-	<div id="containerDownBooks" >
-			<select>
-				<option>Custommer</option>
-			</select>
-	</div>
-		<input type="text" placeholder="Book" class="input-large">
-	<!-- <p>Date: <input type="text" id="datepicker" size="30"/></p> -->
 	<div class="bs-docs-example">
-            <table class="table table-bordered">
+            <table id="tblBooksLoans" class="table table-bordered" >
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Book name</th>
-                  <th>Customer</th>
+                  <th>Book ID</th>
+                  <th>Customer ID</th>
                   <th>Loan date</th>
                   <th>Return date</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Java</td>
-                  <td>Angel Vazquez</td>
-                  <td>12/04/2012</td>
-                  <td>12/09/2012</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>IOS</td>
-                  <td>Jose Ortiz</td>
-                  <td>12/06/2012</td>
-                  <td>12/12/2012</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Flex</td>
-                  <td>Salvador Rojas</td>
-                  <td>01/04/2012</td>
-                  <td>09/07/2012</td>
-                </tr>
-              </tbody>
+              	<% _.each(model, function(i) { print('<tr><td>' + i.attributes.id + '</td>
+                                                      <td>' + i.attributes.bookID + '</td>
+                                                      <td><i class=icon-calendar></i> ' + i.attributes.customerID + '</td>
+                                                      <td width="250"><i class=icon-user></i> ' + i.attributes.currentdate + '</td>
+                                                       <td width="220"><i class=icon-headphones></i> ' + i.attributes.date + '</td>');})%>
+               </tbody>
             </table>
    </div>
    <div class="control-group">
   	 <div class="controls">
-  	 	<button id="btnAvailableBook" class="btn btn-primary">Save changes</button>
+  	 	<button id="btnDeleteBookLoans" class="btn btn-danger">Delete Book Loans</button>
+  	 	<button id="btnEditBookLoans" class="btn btn-warning">Edit Book Loans</button>
+  	 	<button id="btnAvailableBook" class="btn btn-primary">Create Book Loan</button>
   	 </div>
   </div>
 </div>

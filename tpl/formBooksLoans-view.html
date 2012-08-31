@@ -1,0 +1,39 @@
+<div id="createBooks" class="container-fluid">
+	<form class="form-horizontal">
+		<legend>Books</legend>
+		<div class="control-group">
+			<label class="control-label" for="formId">Id: </label>
+		 	<div class="controls">
+		 		<input type="text" id="formId" value="<%= id === null ? '' : id %>" disabled="true" name="id" />
+		 	</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputEmail">Customer: </label>
+			<div id="containerDown" class="controls">
+			</div> 
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputEmail">Book: </label>
+			<div id="containerDown2" class="controls">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputPassword">Current Date: </label>
+			<div class="controls">
+				<input type="text" name="currentdate" id="currentDate" disabled="true" >
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputPassword">Date: </label>
+			<div class="controls">
+				<input type="text" id="datepicker" name="date" >
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<button id="btnCloseBook" type="button" class="btn">Cancel</button>
+				<button id="btnSaveBookLoans" type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</form>
+</div>
