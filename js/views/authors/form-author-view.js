@@ -22,7 +22,6 @@ window.FormAuthorView = Backbone.View.extend ({
 	},
 	
 	change: function ( event ){
-    	
         // Apply the change to the model
         var target = event.target;
         var change = {};
@@ -31,16 +30,16 @@ window.FormAuthorView = Backbone.View.extend ({
     },
     
 	btnCreateAuthorOnclick: function(){
-		//eventManager.trigger("showFormAuthor", new AuthorModel(),false);
 		
 		this.model.save ( null, {
     		success: function( event ) {
     			//Backbone.history.start();
+    			console.log(event);
     			eventManager.trigger("hideModal", null);
     			eventManager.trigger("reloadTableAuthor", null);
-    			
     		}, 
     		error: function( event ) {
+    			console.log(event);
     			alert('Error');
     		}
     	});

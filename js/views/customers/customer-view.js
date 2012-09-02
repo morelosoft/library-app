@@ -9,24 +9,47 @@ window.CustomerView = Backbone.View.extend ({
 	
     render:function (eventName){
         $(this.el).html(this.template({model:this.model.models}));
+        //$(this.el).html(this.template(this.model.toJSON()));
+
         return this;
     },
     
     events:{
-    	"click #btnCreateCustomer":"btnCreateCustomerOnclick"
+    	"click #tblCustomer": "tblCustomerOnClick",
+    	"click #btnCreateCustomer":"btnCreateCustomerOnclick",
+    	"click #btnEdithCustomer":"btnEdithCustomerOnclick",
+    	"click #btnDeleteCustomer":"btnDeleteCustomerOnclick"
     },
     
+    tblCustomerOnClick: function() {
+    	
+		eventManager.trigger("selectRowTblCustomer", null);
+	},
+	
     btnCreateCustomerOnclick: function (){
     	eventManager.trigger("showFormCustomer", new CustomerModel(),false);
-    	
-    }
-    
-    
-	// events: {
-		// "click #btnAddNewForm": "btnAddNewFormOnClick"
-	// },
-// 	
-	// btnAddNewFormOnClick: function() {
-		// eventManager.trigger("showModal", new FormModel(), false);
-	// }
+    },
+	
+	btnEdithCustomerOnclick: function(){
+		eventManager.trigger("showFormCustomer", this.model.models[indexCustomer],true);
+	},
+	
+	btnDeleteCustomerOnclick : function( event ) {
+		
+		_currentModelSelected = this.model.models[indexCustomer];
+		
+		if ( _currentModelSelected != null  ) {
+			_currentModelSelected.destroy( {
+				success: function() {
+					eventManager.trigger("reloadTableAuthor", null);
+				},
+				error: function() {
+					alert("No se eliminó correctamente");
+				}
+			});
+		} else {
+			alert("No hay datos seleccionada.");
+		}
+		
+	},
 });

@@ -12,13 +12,15 @@
                 </tr>
               </thead>
               <tbody>
-              	
-              	<% _.each(model, function(i) { print('<tr><td>' + i.attributes.id + '</td>
-                                                      <td><i class=icon-user></i> ' + i.attributes.name + '</td>
-                                                      <td><i class=icon-calendar></i> ' + i.attributes.age + '</td>
-                                                      <td>' + i.attributes.address + '</td>
-                                                      <td>' + i.attributes.phone + '</td>    
-                                                      <td>' + i.attributes.status + '</td>');    
+              	<% _.each(model, function(i) 
+              	{ 
+              		
+              		print('<tr><td>' + i.attributes.id + '</td>
+                           <td><i class=icon-user></i> ' + i.attributes.name + '</td>
+                           <td><i class=icon-calendar></i> ' + i.attributes.age + '</td>
+                           <td>' + i.attributes.address + '</td>
+                           <td>' + i.attributes.phone + '</td>    
+                           <td>' + i.attributes.status + '</td></tr>');    
                 })%>
               </tbody>
             </table>
@@ -27,7 +29,7 @@
 <div class="control-group">
        		<div class="controls">
        			<button id="btnDeleteCustomer" class="btn btn-danger">Delete Customer</button>
-       			<button id="btnEditCustomer" class="btn btn-warning">Edit Customer</button>
+       			<button id="btnEdithCustomer" class="btn btn-warning">Edit Customer</button>
        			<button id="btnCreateCustomer" class="btn btn-primary">Create Customer</button>
        		</div>
        </div>

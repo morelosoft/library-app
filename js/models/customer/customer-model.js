@@ -2,18 +2,18 @@
  * @author Salvador Rojas
  */
 window.CustomerModel = Backbone.Model.extend({
-	urlRoot: "api/customer",
+	urlRoot: "http://192.168.24.182:8098/clients/",
 	defaults: {
 		"id": null,
 		"name": "",
 		"age": "",
 		"address": "",
 		"phone": "",
-		"status": ""
+		"status": true	
 	}
 });
 
 window.CustomerCollection = Backbone.Collection.extend({
 	model:CustomerModel,
-	url:"api/customer"
+	url:"http://192.168.24.182:8098/clients/"
 });

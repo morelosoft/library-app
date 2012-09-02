@@ -17,8 +17,6 @@ Backbone.View.prototype.close = function () {
 var AppRouter = Backbone.Router.extend({ 
 	 	
  	initialize:function () {
-   		
-    //$('#tab3').html(new SidebarFormPropView().render().el);	
 	},
 	
 	routes:{
@@ -37,7 +35,12 @@ var AppRouter = Backbone.Router.extend({
    		bookLoansList.fetch({
    			success: function( event ){
    				$('#mainContainer').html(new RegistryBookLoans({model:bookLoansList}).render().el);
+   			},
+   			error: function(event) {
+   				console.log(event);
+   				$('#mainContainer').html(new RegistryBookLoans({model:booksList}).render().el);
    			}
+   			
    		});
    		
    		//$('#tab1').html(new SidebarMainView().render().el);
@@ -51,7 +54,11 @@ var AppRouter = Backbone.Router.extend({
 		booksList.fetch({
    			success: function( event ){
    				$('#mainContainer').html(new GridBooks({model:booksList}).render().el);   				
+   			},
+   			error: function(event) {
+   				$('#mainContainer').html(new GridBooks({model:booksList}).render().el);
    			}
+   			
    		});
 	},
 	
@@ -65,6 +72,10 @@ var AppRouter = Backbone.Router.extend({
    		customers.fetch({
    			success: function(event){
    				console.log(customers);
+   				$('#mainContainer').html(new CustomerView({model:customers}).render().el);
+   			},
+   			error: function(event) {
+   				console.log(event);
    				$('#mainContainer').html(new CustomerView({model:customers}).render().el);
    			}
    		});
@@ -82,56 +93,12 @@ var AppRouter = Backbone.Router.extend({
    		authors.fetch({
    			success: function(event){
    				$('#mainContainer').html(new AuthorView({model:authors}).render().el);
+   			},
+   			error: function(event) {
+   				console.log(event);
+   				$('#mainContainer').html(new AuthorView({model:authors}).render().el);
    			}
    		});
-		
-	      	$('#tblAuthor tbody tr').mouseover(function() {
-	
-	         	$(this).addClass('selectedRow');
-	
-	      	}).mouseout(function() {
-	
-	         	$(this).removeClass('selectedRow');
-	
-	      	}).dblclick(function() {
-				var age = $('td:first', this).next();
-				var country = age.next();
-				
-				var authorID = $('td:first', this).text();
-				
-				var cont = 0;
-				
-	         	/*alert($('td:first', this).next().text());
-	         	alert(age.next().text());
-	         	alert(country.next().text());*/
-	         	
-	         	$("#tblAuthor tbody tr").each(function (index) {
-              		var campo1, campo2, campo3;
-              		$(this).children("td").each(function (index2) {
-                  	switch (index2) {
-                  		
-                      	case 0:
-                          campo1 = $(this).text();
-                          
-                          alert(campo1);
-                          if(campo1 == authorID){
-		              			indexAuthor = cont;
-		              		}
-                          break;
-                      	case 1:
-                         campo2 = $(this).text();
-                         break;
-                      	case 2:
-                          campo3 = $(this).text();
-                          break;
-                  		}
-              		})
-              		
-              		
-              		cont++;
-          			
-           		})
-	      	});
 	}
 });
 
@@ -195,6 +162,54 @@ $(document).ready(function () {
 	
 	eventManager.on("hideModal", function ( paramModel, msg ){
 		$('#myModal').modal('hide');
+	});
+	
+	eventManager.on("selectRowTblAuthor", function ( paramModel, msg ){
+		$('#tblAuthor tbody tr').mouseover(function() {
+	         	$(this).addClass('selectedRow');
+	      	}).mouseout(function() {
+	         	$(this).removeClass('selectedRow');
+	      	}).click(function() {
+				var authorID = $('td:first', this).text();
+				
+				var cont = 0;
+	         	$("#tblAuthor tbody tr").each(function (index) {
+              		var campo1;
+              		$(this).children("td").each(function (index2) {
+                  	if(index2==0) {
+                          campo1 = $(this).text();
+                          if(campo1 == authorID){
+		              			indexAuthor = cont;
+		              		}
+		              		cont++;
+                  		}
+              		});
+           		})
+	      });
+	});
+	
+	eventManager.on("selectRowTblCustomer", function ( paramModel, msg ){
+		$('#tblCustomer tbody tr').mouseover(function() {
+	         	$(this).addClass('selectedRow');
+	      	}).mouseout(function() {
+	         	$(this).removeClass('selectedRow');
+	      	}).click(function() {
+				var customerID = $('td:first', this).text();
+				
+				var contCustomer = 0;
+	         	$("#tblCustomer tbody tr").each(function (index) {
+              		var campo1;
+              		$(this).children("td").each(function (index2) {
+                  	if(index2==0) {
+                          campo1 = $(this).text();
+                          if(campo1 == customerID){
+		              			indexCustomer = contCustomer;
+		              		}
+		              		contCustomer++;
+                  		}
+              		});
+           		})
+	      });
 	});
 	
 	eventManager.on("reloadTableAuthor", function ( paramModel, msg ){

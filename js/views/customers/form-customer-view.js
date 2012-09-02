@@ -31,8 +31,6 @@ window.FormCustomerView = Backbone.View.extend ({
     },
     
 	btnCreateCustomerOnclick: function(){
-		//eventManager.trigger("showFormAuthor", new AuthorModel(),false);
-		
 		this.model.save ( null, {
     		success: function( event ) {
     			//Backbone.history.start();
@@ -41,6 +39,7 @@ window.FormCustomerView = Backbone.View.extend ({
     			
     		}, 
     		error: function( event ) {
+    			console.log(event)
     			alert('Error');
     		}
     	});

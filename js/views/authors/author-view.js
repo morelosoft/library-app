@@ -6,28 +6,48 @@ window.AuthorView = Backbone.View.extend ({
 	initialize:function () {
         this.template = _.template(tpl.get('author-view'));
     },
-
-	_selectedIndex: 2,
-	_currentModelSelected: {},
 	
     render:function (eventName){
         $(this.el).html(this.template({model:this.model.models}));
+        //$(this.el).html(this.template(this.model.toJSON()));
         return this;
     },
 	events: {
-		"dblclick #tblAuthor": "tblAuthorOnClick",
+		"click #tblAuthor": "tblAuthorOnClick",
 		"click #btnCreateAuthor":"btnCreateAuthorOnclick",
-		"click #btnEdithAuthor":"btnCreateAuthorOnclick"
-
+		"click #btnEdithAuthor":"btnEdithAuthorOnclick",
+		"click #btnDeleteAuthor":"btnDeleteAuthorOnclick"
 	},
-// 	
+	
 	tblAuthorOnClick: function() {
-		//eventManager.trigger("selectRow", null);
-		
-		eventManager.trigger("showFormAuthor", this.model.models[indexAuthor],true);
+		eventManager.trigger("selectRowTblAuthor", null);
 	},
 	
 	btnCreateAuthorOnclick: function(){
 		eventManager.trigger("showFormAuthor", new AuthorModel(),false);
-	}
+	},
+	
+	btnEdithAuthorOnclick: function(){
+		eventManager.trigger("showFormAuthor", this.model.models[indexAuthor],true);
+	},
+	
+	btnDeleteAuthorOnclick : function( event ) {
+		
+		_currentModelSelected = this.model.models[indexAuthor];
+		
+		if ( _currentModelSelected != null  ) {
+			_currentModelSelected.destroy( {
+				success: function() {
+					alert("Si se eliminó");
+					eventManager.trigger("reloadTableAuthor", null);
+				},
+				error: function() {
+					alert("No se eliminó correctamente");
+				}
+			});
+		} else {
+			alert("No hay datos seleccionada.");
+		}
+		
+	},
 });
